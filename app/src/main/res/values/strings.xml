@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">mapbox</string>
+    <string name="access_token">pk.eyJ1IjoicGV0ZXJleSIsImEiOiJjanVpNHltd24weXZtNDRvM2J6MnMxY3Q0In0.GZpLcb_485JWbzpf9vaswg</string>
+    <string name="toast_no_regions_yet">lista1</string>
+    <string name="navigate_title">titulo</string>
+    <string name="navigate_positive_button">ir a</string>
+    <string name="navigate_neutral_button_title"> borrar</string>
+    <string name="toast_region_deleted">borrada</string>
+    <string name="navigate_negative_button_title">cancelar</string>
+
+
+
+
+</resources>
