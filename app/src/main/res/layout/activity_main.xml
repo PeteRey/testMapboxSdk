@@ -24,12 +24,6 @@
 
 
     </com.mapbox.mapboxsdk.maps.MapView>
-<!--
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />-->
 
     <Button
         android:id="@+id/downloadButton"
@@ -38,7 +32,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginBottom="32dp"
-        android:text="descarga"
+        android:text="@string/download_button"
         mapbox:layout_constraintBottom_toBottomOf="parent"
         mapbox:layout_constraintStart_toStartOf="parent" />
 
@@ -49,7 +43,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:text="lista"
+        android:text="@string/list_download_region"
         mapbox:layout_constraintBottom_toBottomOf="parent"
         mapbox:layout_constraintEnd_toEndOf="parent" />
 

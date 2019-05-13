@@ -7,7 +7,8 @@
     <string name="navigate_neutral_button_title"> borrar</string>
     <string name="toast_region_deleted">borrada</string>
     <string name="navigate_negative_button_title">cancelar</string>
-
+    <string name="download_button">download</string>
+    <string name="list_download_region">list</string>
 
 
 

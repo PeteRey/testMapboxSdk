@@ -9,14 +9,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.mapbox.mapboxsdk.Mapbox;
-import com.mapbox.mapboxsdk.annotations.MarkerOptions;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
-import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.geometry.LatLngBounds;
 import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
@@ -27,12 +24,7 @@ import com.mapbox.mapboxsdk.offline.OfflineRegion;
 import com.mapbox.mapboxsdk.offline.OfflineRegionError;
 import com.mapbox.mapboxsdk.offline.OfflineRegionStatus;
 import com.mapbox.mapboxsdk.offline.OfflineTilePyramidRegionDefinition;
-import com.mapbox.mapboxsdk.plugins.offline.model.NotificationOptions;
-import com.mapbox.mapboxsdk.plugins.offline.model.OfflineDownloadOptions;
-import com.mapbox.mapboxsdk.plugins.offline.offline.OfflinePlugin;
-import com.mapbox.mapboxsdk.plugins.offline.utils.OfflineUtils;
 import com.mapbox.mapboxsdk.style.layers.FillLayer;
-import com.mapbox.mapboxsdk.style.layers.Layer;
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource;
 
 import org.json.JSONObject;
@@ -50,11 +42,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     private MapView mapView;
     private MapboxMap map;
-    private ProgressBar progresBar;
     private Button downloadButton;
     private Button listButton;
 
-    private boolean isEndNotified;
     private int regionSelected;
 
     private OfflineManager offlineManager;
@@ -71,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         Mapbox.getInstance(this, getString(R.string.access_token));
         setContentView(R.layout.activity_main);
-        mapView = (MapView) findViewById(R.id.mapView);
+        mapView = findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
     }
@@ -82,10 +72,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         mapboxMap.setStyle(Style.MAPBOX_STREETS, new Style.OnStyleLoaded() {
                 @Override
             public void onStyleLoaded(@NonNull Style style) {
-                //loadJsonUrl(style);
-                //loadOff(style);
-
-                //progresBar = findViewById(R.id.progress_bar);
 
                 offlineManager = OfflineManager.getInstance(MainActivity.this);
                 downloadButton = findViewById(R.id.downloadButton);
@@ -93,7 +79,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                     @Override
                     public void onClick(View v) {
                         downloadRegion();
-
                     }
                 });
 
@@ -110,18 +95,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     public void downloadRegion () {
 
-/*        LatLngBounds latLngBounds = new LatLngBounds.Builder()
-                .include(new LatLng(37.7897, -119.5073)) // Northeast
-                .include(new LatLng(37.6744, -119.6815)) // Southwest
-                .build();
-
-        OfflineTilePyramidRegionDefinition definition = new OfflineTilePyramidRegionDefinition(
-                style.getUrl(),
-                latLngBounds,
-                10,
-                20,
-                MainActivity.this.getResources().getDisplayMetrics().density);*/
-
         String styleUrl = map.getStyle().getUrl();
         LatLngBounds bounds = map.getProjection().getVisibleRegion().latLngBounds;
         double minZoom = map.getCameraPosition().zoom;
@@ -131,11 +104,11 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         OfflineTilePyramidRegionDefinition definition = new OfflineTilePyramidRegionDefinition(styleUrl, bounds, minZoom, maxZoom, pixelRatio);
 
 
-        // Implementation that uses JSON to store Yosemite National Park as the offline region name.
+        // Implementation that uses JSON to store
         byte[] metadata;
         try {
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put(JSON_FIELD_REGION_NAME, "Yosemite National Park");
+            jsonObject.put(JSON_FIELD_REGION_NAME, "Campo de Caso");
             String json = jsonObject.toString();
             metadata = json.getBytes(JSON_CHARSET);
         } catch (Exception exception) {
@@ -190,10 +163,11 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         Log.e(TAG, "Error: " + error);
                     }
                 });
-
     }
+
+
         private void downloadedRegionList() {
-                // Build a region list when the user clicks the list button
+                // Build a region list
 
                 // Reset the region selected int to 0
             regionSelected = 0;
@@ -221,7 +195,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                             .setSingleChoiceItems(items, 0, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-// Track which region the user selects
+                                // Track which region the user selects
                                     regionSelected = which;
                                 }
                             })
@@ -231,19 +205,19 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                                     Toast.makeText(MainActivity.this, items[regionSelected], Toast.LENGTH_LONG).show();
 
-// Get the region bounds and zoom
+                                    // Get the region bounds and zoom
                                     LatLngBounds bounds = ((OfflineTilePyramidRegionDefinition)
                                             offlineRegions[regionSelected].getDefinition()).getBounds();
                                     double regionZoom = ((OfflineTilePyramidRegionDefinition)
                                             offlineRegions[regionSelected].getDefinition()).getMinZoom();
 
-// Create new camera position
+                                    // Create new camera position
                                     CameraPosition cameraPosition = new CameraPosition.Builder()
                                             .target(bounds.getCenter())
                                             .zoom(regionZoom)
                                             .build();
 
-// Move camera to new position
+                                    // Move camera to new position
                                     map.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
                                 }
@@ -251,28 +225,17 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                             .setNeutralButton(getString(R.string.navigate_neutral_button_title), new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int id) {
-// Make progressBar indeterminate and
-// set it to visible to signal that
-// the deletion process has begun
-                                /*    progressBar.setIndeterminate(true);
-                                    progressBar.setVisibility(View.VISIBLE);*/
 
-// Begin the deletion process
+                                    // Begin the deletion process
                                     offlineRegions[regionSelected].delete(new OfflineRegion.OfflineRegionDeleteCallback() {
                                         @Override
                                         public void onDelete() {
-// Once the region is deleted, remove the
-// progressBar and display a toast
-                                         /*   progressBar.setVisibility(View.INVISIBLE);
-                                            progressBar.setIndeterminate(false);*/
                                             Toast.makeText(getApplicationContext(), getString(R.string.toast_region_deleted),
                                                     Toast.LENGTH_LONG).show();
                                         }
 
                                         @Override
                                         public void onError(String error) {
-                                      /*      progressBar.setVisibility(View.INVISIBLE);
-                                            progressBar.setIndeterminate(false);*/
                                             Timber.e( "Error: %s", error);
                                         }
                                     });
@@ -281,8 +244,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                             .setNegativeButton(getString(R.string.navigate_negative_button_title), new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int id) {
-                // When the user cancels, don't do anything.
-                // The dialog will automatically close
+                                // When the user cancels, don't do anything.
+                                // The dialog will automatically close
                                 }
                             }).create();
                     dialog.show();
@@ -297,43 +260,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
 
 
-/*        offlineManager.createOfflineRegion(definition, metadata, new OfflineManager.CreateOfflineRegionCallback() {
-            @Override
-            public void onCreate(OfflineRegion offlineRegion) {
-                offlineRegion.setDownloadState(OfflineRegion.STATE_ACTIVE);
-                Log.e(TAG, "Creada region offline");
-                        offlineRegion = offline;
-                launchDownload();
-            }
 
-            @Override
-            public void onError(String error) {
-                Log.e(TAG, "no creada");
-            }
-        });*/
-
-
-
-/*// Customize the download notification's appearance
-        NotificationOptions notificationOptions = NotificationOptions.builder(this)
-                .smallIconRes(R.drawable.mapbox_logo_icon)
-                .returnActivity(MainActivity.class.getName())
-                .build();
-
-// Start downloading the map tiles for offline use
-        OfflinePlugin.getInstance(this).startDownload(
-                OfflineDownloadOptions.builder()
-                        .definition(definition)
-                        .metadata(metadata)
-                        .notificationOptions(notificationOptions)
-                        .build()
-        );*/
-
-
-
-    private void launchDownload(){
-
-    }
     public void loadJsonUrl(Style style){
         try {
             URL geoJsonUrl = new URL("https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_50m_urban_areas.geojson");
