@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private MapboxMap map;
     private Button downloadButton;
     private Button listButton;
+    private Button loadJsonButton;
 
     private int regionSelected;
 
@@ -69,29 +70,47 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onMapReady(@NonNull final MapboxMap mapboxMap){
         map = mapboxMap;
-        mapboxMap.setStyle(Style.MAPBOX_STREETS, new Style.OnStyleLoaded() {
-                @Override
-            public void onStyleLoaded(@NonNull Style style) {
-
-                offlineManager = OfflineManager.getInstance(MainActivity.this);
-                downloadButton = findViewById(R.id.downloadButton);
-                downloadButton.setOnClickListener(new View.OnClickListener() {
+//        mapboxMap.setStyle(Style.MAPBOX_STREETS, new Style.OnStyleLoaded() {
+//                @Override
+//            public void onStyleLoaded(@NonNull Style style) {
+//
+//                offlineManager = OfflineManager.getInstance(MainActivity.this);
+//                downloadButton = findViewById(R.id.downloadButton);
+//                downloadButton.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        downloadRegion();
+//                    }
+//                });
+//
+//                listButton = findViewById(R.id.listButton);
+//                listButton.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        downloadedRegionList();
+//                    }
+//                });
+//
+//                loadJsonButton = findViewById(R.id.JSONbutton);
+//                loadJsonButton.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        mapboxMap.setStyle(new Style.Builder().fromUrl("asset://style-offline.json"));
+//                        Log.e(TAG, "load json");
+//                    }
+//                });
+//            }
+        map.setStyle(Style.LIGHT);
+        loadJsonButton = findViewById(R.id.JSONbutton);
+                loadJsonButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        downloadRegion();
+                        mapboxMap.setStyle(new Style.Builder().fromUrl("asset://style-offline.json"));
+                        Log.e(TAG, "load json");
                     }
                 });
-
-                listButton = findViewById(R.id.listButton);
-                listButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        downloadedRegionList();
-                    }
-                });
-            }
-        });
-    }
+        }
+    //}
 
     public void downloadRegion () {
 
