@@ -1,0 +1,951 @@
+{
+  "owner": "Deimos",
+  "metadata": {
+    "mapbox:accesToken": "pk.eyJ1IjoibW9iaWxpdHktZGVpbW9zIiwiYSI6ImNqaGFtaGpjMDBjNXozNm56ajludGhlZngifQ.k-IrLyFjdWQ4lOpTwOSelg",
+    "accparhis:date": "2019-05-31T08:56:11.938Z"
+  },
+  "sources": {
+    "simple-tiles": {
+      "tiles": ["http://a.tile.openstreetmap.org/{z}/{x}/{y}.png", "http://b.tile.openstreetmap.org/{z}/{x}/{y}.png"],
+      "scheme": "xyz",
+      "tileSize": 256,
+      "type": "raster"
+    },
+    "retiro": {
+      "tiles": ["http://195.76.38.10:18081/geowebcache/service/tms/1.0.0/dev:retiro-retiro@agia:900913@pbf/{z}/{x}/{y}.pbf"],
+      "scheme": "tms",
+      "bounds": [-3.688884272474369, 40.40820812568393, -3.6764302539524234, 40.421528059548365],
+      "type": "vector"
+    },
+    "satellite": {
+      "tiles": ["http://172.27.20.21:18081/geowebcache/service/tms/1.0.0/PNOA-Cadiz@agia:900913@png/{z}/{x}/{y}.png"],
+      "scheme": "tms",
+      "type": "raster"
+    }
+  },
+  "center": [-3.6830656180821, 40.4147255182044],
+  "name": "RETIRO",
+  "sprite": "https://storage.googleapis.com/agia-local-front/common-files/sprites/agia-sprite/accparhis-sprite",
+  "layers": [{
+    "metadata": {
+      "accparhis:z-index": 1
+    },
+    "paint": {
+      "background-color": "hsl(47, 26%, 88%)"
+    },
+    "id": "background",
+    "type": "background"
+  }, {
+    "layout": {
+      "visibility": "none"
+    },
+    "metadata": {
+      "accparhis:z-index": 1
+    },
+    "id": "satellite",
+    "source": "satellite",
+    "type": "raster"
+  }, {
+    "layout": {
+      "visibility": "none"
+    },
+    "metadata": {
+      "accparhis:z-index": 1
+    },
+    "maxzoom": 22,
+    "id": "street",
+    "source": "simple-tiles",
+    "type": "raster",
+    "minzoom": 0
+  }, {
+    "metadata": {
+      "accparhis:z-index": 2
+    },
+    "paint": {
+      "fill-pattern": "tile_cesped",
+      "fill-color": "hsl(336, 9%, 67%)",
+      "fill-opacity": 1
+    },
+    "id": "cesped",
+    "source": "retiro",
+    "source-layer": "retiro-cesped",
+    "type": "fill"
+  }, {
+    "metadata": {
+      "accparhis:z-index": 3
+    },
+    "paint": {
+      "fill-outline-color": "hsl(0, 0%, 100%)",
+      "fill-color": "hsl(0, 0%, 92%)"
+    },
+    "id": "zona_pavimentada",
+    "source": "retiro",
+    "source-layer": "retiro-zona_pavimentada",
+    "type": "fill"
+  }, {
+    "metadata": {
+      "accparhis:z-index": 4
+    },
+    "paint": {
+      "fill-color": "hsl(36, 98%, 81%)"
+    },
+    "id": "zona_terrizo",
+    "source": "retiro",
+    "source-layer": "retiro-zona_terrizo",
+    "type": "fill"
+  }, {
+    "metadata": {
+      "accparhis:z-index": 5
+    },
+    "paint": {
+      "fill-pattern": ["step", ["zoom"], "cultivado_little", 16, "cultivado_little", 22, "cultivado"],
+      "fill-color": "hsl(84, 55%, 72%)"
+    },
+    "id": "suelo_cultivado",
+    "source": "retiro",
+    "source-layer": "retiro-suelo_cultivado",
+    "type": "fill"
+  }, {
+    "metadata": {
+      "accparhis:z-index": 6
+    },
+    "paint": {
+      "fill-color": "hsl(48, 100%, 86%)"
+    },
+    "id": "area_infantil",
+    "source": "retiro",
+    "source-layer": "retiro-area_infantil",
+    "type": "fill"
+  }, {
+    "metadata": {
+      "accparhis:z-index": 7
+    },
+    "paint": {
+      "fill-color": "hsl(355, 89%, 82%)"
+    },
+    "id": "area_deportiva",
+    "source": "retiro",
+    "source-layer": "retiro-area_deportiva",
+    "type": "fill"
+  }, {
+    "metadata": {
+      "accparhis:z-index": 8
+    },
+    "paint": {
+      "fill-color": "hsl(336, 47%, 82%)"
+    },
+    "id": "area_mayores",
+    "source": "retiro",
+    "source-layer": "retiro-area_mayores",
+    "type": "fill"
+  }, {
+    "metadata": {
+      "accparhis:z-index": 9
+    },
+    "paint": {
+      "fill-pattern": "pradera"
+    },
+    "id": "pradera",
+    "source": "retiro",
+    "source-layer": "retiro-pradera",
+    "type": "fill"
+  }, {
+    "metadata": {
+      "accparhis:z-index": 10
+    },
+    "paint": {
+      "fill-color": "#a3ccff"
+    },
+    "id": "red_riego_sup",
+    "source": "retiro",
+    "source-layer": "retiro-red_riego_sup",
+    "type": "fill"
+  }, {
+    "metadata": {
+      "accparhis:z-index": 11
+    },
+    "paint": {
+      "fill-pattern": ["step", ["zoom"], "arbustivo_little", 18, "arbustivo_little", 20, "arbustivo_high", 22, "arbustivo"]
+    },
+    "id": "macizo_arbustivo",
+    "source": "retiro",
+    "source-layer": "retiro-macizo_arbustivo",
+    "type": "fill"
+  }, {
+    "metadata": {
+      "accparhis:z-index": 12
+    },
+    "paint": {
+      "fill-pattern": ["step", ["zoom"], "flor_superlittle", 16, "flor_superlittle", 18, "flor_little", 22, "flor"]
+    },
+    "id": "macizo_flor",
+    "source": "retiro",
+    "source-layer": "retiro-macizo_flor",
+    "type": "fill"
+  }, {
+    "metadata": {
+      "accparhis:z-index": 13
+    },
+    "paint": {
+      "fill-color": "hsl(0, 7%, 45%)"
+    },
+    "id": "edificios",
+    "source": "retiro",
+    "source-layer": "retiro-edificios",
+    "type": "fill"
+  }, {
+    "metadata": {
+      "accparhis:z-index": 13
+    },
+    "paint": {
+      "fill-pattern": "escalera"
+    },
+    "id": "escalera",
+    "source": "retiro",
+    "source-layer": "retiro-escalera",
+    "type": "fill"
+  }, {
+    "metadata": {
+      "accparhis:z-index": 15
+    },
+    "paint": {
+      "fill-pattern": ["step", ["zoom"], "muro_little", 19, "muro_little", 22, "muro"]
+    },
+    "id": "muro",
+    "source": "retiro",
+    "source-layer": "retiro-muro",
+    "type": "fill"
+  }, {
+    "metadata": {
+      "accparhis:z-index": 16
+    },
+    "paint": {
+      "fill-color": "hsl(33, 32%, 61%)"
+    },
+    "id": "puente",
+    "source": "retiro",
+    "source-layer": "retiro-puente",
+    "type": "fill"
+  }, {
+    "metadata": {
+      "accparhis:z-index": 17
+    },
+    "paint": {
+      "fill-pattern": ["step", ["zoom"], "rocalla_little", 22, "rocalla"]
+    },
+    "id": "rocalla",
+    "source": "retiro",
+    "source-layer": "retiro-rocalla",
+    "type": "fill"
+  }, {
+    "metadata": {
+      "accparhis:z-index": 18
+    },
+    "paint": {
+      "fill-pattern": ["step", ["zoom"], "seto_little", 22, "seto"]
+    },
+    "id": "seto",
+    "source": "retiro",
+    "source-layer": "retiro-seto",
+    "type": "fill"
+  }, {
+    "metadata": {
+      "accparhis:z-index": 19
+    },
+    "paint": {
+      "fill-color": "hsla(178, 80%, 39%, 0.6)"
+    },
+    "id": "iho",
+    "source": "retiro",
+    "source-layer": "retiro-iho",
+    "type": "fill"
+  }, {
+    "metadata": {
+      "accparhis:z-index": 20
+    },
+    "paint": {
+      "line-width": ["interpolate", ["linear"],
+        ["zoom"], 16, 0, 18, 1, 20, 5, 22, 20
+      ],
+      "line-color": "hsl(0, 0%, 68%)"
+    },
+    "id": "alcorque",
+    "source": "retiro",
+    "source-layer": "retiro-alcorque",
+    "type": "line",
+    "minzoom": 17
+  }, {
+    "layout": {
+      "line-miter-limit": 2,
+      "line-cap": "square"
+    },
+    "metadata": {
+      "accparhis:z-index": 21
+    },
+    "paint": {
+      "line-width": {
+        "stops": [
+          [17, 1],
+          [22, 2]
+        ]
+      },
+      "line-gap-width": 0,
+      "line-offset": 0,
+      "line-blur": 0,
+      "line-translate": [0, 0],
+      "line-color": "hsl(0, 0%, 79%)"
+    },
+    "id": "bordillo",
+    "source": "retiro",
+    "source-layer": "retiro-bordillo",
+    "type": "line",
+    "minzoom": 17
+  }, {
+    "metadata": {
+      "accparhis:z-index": 22
+    },
+    "paint": {
+      "line-width": 10,
+      "line-color": "hsl(56, 47%, 67%)"
+    },
+    "id": "cerramiento_area_infantil",
+    "source": "retiro",
+    "source-layer": "retiro-cerramiento_area_infantil",
+    "type": "line",
+    "minzoom": 17
+  }, {
+    "layout": {
+      "line-join": "round"
+    },
+    "metadata": {
+      "accparhis:z-index": 23
+    },
+    "paint": {
+      "line-width": 2,
+      "line-gap-width": 2,
+      "line-opacity": 1,
+      "line-dasharray": [4, 2],
+      "line-color": "hsl(0, 0%, 62%)"
+    },
+    "id": "cerramiento",
+    "source": "retiro",
+    "source-layer": "retiro-cerramiento",
+    "type": "line",
+    "minzoom": 17
+  }, {
+    "metadata": {
+      "accparhis:z-index": 24
+    },
+    "paint": {
+      "line-color": "#a3ccff"
+    },
+    "id": "red_riego_linea",
+    "source": "retiro",
+    "source-layer": "retiro-red_riego_linea",
+    "type": "line",
+    "minzoom": 17
+  }, {
+    "metadata": {
+      "accparhis:z-index": 25
+    },
+    "paint": {
+      "line-color": "#f3e53c"
+    },
+    "id": "red_alumbrado_linea",
+    "source": "retiro",
+    "source-layer": "retiro-red_alumbrado_linea",
+    "type": "line",
+    "minzoom": 17
+  }, {
+    "metadata": {
+      "accparhis:z-index": 26
+    },
+    "paint": {
+      "line-width": 2,
+      "line-color": "#298ec6"
+    },
+    "id": "red_saneamiento_linea",
+    "source": "retiro",
+    "source-layer": "retiro-red_saneamiento_linea",
+    "type": "line",
+    "minzoom": 17
+  }, {
+    "metadata": {
+      "accparhis:z-index": 27
+    },
+    "paint": {
+      "line-width": 10,
+      "line-opacity": 1,
+      "line-color": "hsl(84, 56%, 67%)"
+    },
+    "id": "parque",
+    "source": "retiro",
+    "source-layer": "retiro-parque",
+    "type": "line"
+  }, {
+    "metadata": {
+      "accparhis:z-index": 28
+    },
+    "paint": {
+      "line-width": 10,
+      "line-opacity": 1,
+      "line-color": "hsl(84, 56%, 67%)"
+    },
+    "id": "area_actuacion",
+    "source": "retiro",
+    "source-layer": "retiro-area_actuacion",
+    "type": "line"
+  }, {
+    "metadata": {
+      "accparhis:z-index": 29
+    },
+    "paint": {
+      "line-width": {
+        "stops": [
+          [2, 2],
+          [3, 2],
+          [17, 3]
+        ]
+      },
+      "line-color": "hsl(0, 0%, 80%)"
+    },
+    "id": "pletina",
+    "source": "retiro",
+    "source-layer": "retiro-pletina",
+    "type": "line",
+    "minzoom": 17
+  }, {
+    "metadata": {
+      "accparhis:z-index": 30
+    },
+    "paint": {
+      "line-width": 5,
+      "line-color": "hsl(0, 0%, 50%)"
+    },
+    "id": "pergola",
+    "source": "retiro",
+    "source-layer": "retiro-pergola",
+    "type": "line"
+  }, {
+    "metadata": {
+      "accparhis:z-index": 30
+    },
+    "paint": {
+      "line-width": 5,
+      "line-color": "hsl(0, 0%, 85%)"
+    },
+    "id": "talanquera",
+    "source": "retiro",
+    "source-layer": "retiro-talanquera",
+    "type": "line"
+  }, {
+    "layout": {
+      "icon-allow-overlap": true,
+      "text-field": "d",
+      "text-offset": [0, 0.2],
+      "text-size": ["interpolate", ["linear"],
+        ["zoom"], 0, 10, 19, 30, 22, 100
+      ],
+      "text-allow-overlap": true,
+      "text-ignore-placement": true,
+      "icon-size": ["interpolate", ["linear"],
+        ["zoom"], 0, 0.1, 19, 0.3, 22, 1
+      ],
+      "icon-image": "fondo",
+      "icon-ignore-placement": true,
+      "text-font": ["accparhis"]
+    },
+    "metadata": {
+      "accparhis:z-index": 31
+    },
+    "maxzoom": 24,
+    "paint": {
+      "text-halo-color": "#FFF",
+      "text-color": "#f8737e",
+      "text-halo-width": ["interpolate", ["linear"],
+        ["zoom"], 0, 0.5, 19, 1.5, 22, 5
+      ]
+    },
+    "id": "elemento_area_deportiva",
+    "source": "retiro",
+    "source-layer": "retiro-elemento_area_deportiva",
+    "type": "symbol",
+    "minzoom": 17
+  }, {
+    "layout": {
+      "icon-allow-overlap": true,
+      "text-field": "c",
+      "text-offset": [0, 0.2],
+      "text-size": ["interpolate", ["linear"],
+        ["zoom"], 0, 10, 19, 30, 22, 100
+      ],
+      "text-allow-overlap": true,
+      "text-ignore-placement": true,
+      "icon-size": ["interpolate", ["linear"],
+        ["zoom"], 0, 0.1, 19, 0.3, 22, 1
+      ],
+      "icon-image": "fondo",
+      "icon-ignore-placement": true,
+      "text-font": ["accparhis"]
+    },
+    "metadata": {
+      "accparhis:z-index": 32
+    },
+    "paint": {
+      "text-halo-color": "#FFF",
+      "text-color": "#14b598",
+      "text-halo-width": ["interpolate", ["linear"],
+        ["zoom"], 0, 0.5, 19, 1.5, 22, 5
+      ]
+    },
+    "id": "elemento_area_canina",
+    "source": "retiro",
+    "source-layer": "retiro-elemento_area_canina",
+    "type": "symbol",
+    "minzoom": 17
+  }, {
+    "layout": {
+      "icon-allow-overlap": true,
+      "text-field": "g",
+      "text-offset": [0, 0.2],
+      "text-size": ["interpolate", ["linear"],
+        ["zoom"], 0, 10, 19, 30, 22, 100
+      ],
+      "text-allow-overlap": true,
+      "text-ignore-placement": true,
+      "icon-size": ["interpolate", ["linear"],
+        ["zoom"], 0, 0.1, 19, 0.3, 22, 1
+      ],
+      "icon-image": "fondo",
+      "icon-ignore-placement": true,
+      "text-font": ["accparhis"]
+    },
+    "metadata": {
+      "accparhis:z-index": 33
+    },
+    "paint": {
+      "text-halo-color": "#FFF",
+      "text-color": "#d67399",
+      "text-halo-width": ["interpolate", ["linear"],
+        ["zoom"], 0, 0.5, 19, 1.5, 22, 5
+      ]
+    },
+    "id": "elemento_area_mayores",
+    "source": "retiro",
+    "source-layer": "retiro-elemento_area_mayores",
+    "type": "symbol",
+    "minzoom": 17
+  }, {
+    "layout": {
+      "icon-allow-overlap": true,
+      "text-field": "e",
+      "text-offset": [0, 0.2],
+      "text-size": ["interpolate", ["linear"],
+        ["zoom"], 0, 10, 19, 30, 22, 100
+      ],
+      "text-allow-overlap": true,
+      "text-ignore-placement": true,
+      "icon-size": ["interpolate", ["linear"],
+        ["zoom"], 0, 0.1, 19, 0.3, 22, 1
+      ],
+      "icon-image": "fondo",
+      "icon-ignore-placement": true,
+      "text-font": ["accparhis"]
+    },
+    "metadata": {
+      "accparhis:z-index": 34
+    },
+    "paint": {
+      "text-halo-color": "#FFF",
+      "text-color": "#c3cb2e",
+      "text-halo-width": ["interpolate", ["linear"],
+        ["zoom"], 0, 0.5, 19, 1.5, 22, 5
+      ]
+    },
+    "id": "elemento_area_infantil",
+    "source": "retiro",
+    "source-layer": "retiro-elemento_area_infantil",
+    "type": "symbol",
+    "minzoom": 17
+  }, {
+    "layout": {
+      "text-field": "b",
+      "text-offset": [0, 0.2],
+      "text-size": ["interpolate", ["linear"],
+        ["zoom"], 0, 10, 19, 30, 22, 100
+      ],
+      "text-allow-overlap": true,
+      "text-ignore-placement": true,
+      "text-font": ["accparhis"]
+    },
+    "metadata": {
+      "accparhis:z-index": 35
+    },
+    "maxzoom": 24,
+    "paint": {
+      "text-color": "#30a782",
+      "text-opacity": 0.5
+    },
+    "id": "arbusto",
+    "source": "retiro",
+    "source-layer": "retiro-arbusto",
+    "type": "symbol",
+    "minzoom": 17
+  }, {
+    "metadata": {
+      "accparhis:z-index": 36
+    },
+    "maxzoom": 24,
+    "paint": {
+      "circle-stroke-width": ["interpolate", ["linear"],
+        ["zoom"], 0, 5, 16, 2, 22, 35
+      ],
+      "circle-color": "#a58060",
+      "circle-stroke-color": "#8ac863",
+      "circle-opacity": ["interpolate", ["linear"],
+        ["zoom"], 0, 1, 22, 1
+      ],
+      "circle-radius": ["interpolate", ["linear"],
+        ["zoom"], 0, 2, 16, 1, 22, 15
+      ],
+      "circle-stroke-opacity": ["interpolate", ["linear"],
+        ["zoom"], 0, 0.5, 22, 0.5
+      ]
+    },
+    "id": "arbol",
+    "source": "retiro",
+    "source-layer": "retiro-arbol",
+    "type": "circle",
+    "minzoom": 17
+  }, {
+    "layout": {
+      "icon-allow-overlap": true,
+      "text-field": "q",
+      "text-offset": [0, 0.2],
+      "text-size": ["interpolate", ["linear"],
+        ["zoom"], 0, 10, 19, 30, 22, 100
+      ],
+      "text-allow-overlap": true,
+      "text-ignore-placement": true,
+      "icon-size": ["interpolate", ["linear"],
+        ["zoom"], 0, 0.1, 19, 0.3, 22, 1
+      ],
+      "icon-image": "fondo",
+      "icon-ignore-placement": true,
+      "text-font": ["accparhis"]
+    },
+    "metadata": {
+      "accparhis:z-index": 37
+    },
+    "paint": {
+      "text-halo-color": "#FFF",
+      "text-color": "#148fbe",
+      "text-halo-width": ["interpolate", ["linear"],
+        ["zoom"], 0, 0.5, 19, 1.5, 22, 5
+      ]
+    },
+    "id": "red_saneamiento_pto",
+    "source": "retiro",
+    "source-layer": "retiro-red_saneamiento_pto",
+    "type": "symbol",
+    "minzoom": 17
+  }, {
+    "layout": {
+      "icon-allow-overlap": true,
+      "text-field": "a",
+      "text-offset": [0, 0.2],
+      "text-size": ["interpolate", ["linear"],
+        ["zoom"], 0, 10, 19, 30, 22, 100
+      ],
+      "text-allow-overlap": true,
+      "text-ignore-placement": true,
+      "icon-size": ["interpolate", ["linear"],
+        ["zoom"], 0, 0.1, 19, 0.3, 22, 1
+      ],
+      "icon-image": "fondo",
+      "icon-ignore-placement": true,
+      "text-font": ["accparhis"]
+    },
+    "metadata": {
+      "accparhis:z-index": 38
+    },
+    "maxzoom": 24,
+    "paint": {
+      "text-halo-color": "#FFF",
+      "text-color": "#f4e53b",
+      "text-halo-width": ["interpolate", ["linear"],
+        ["zoom"], 0, 0.5, 19, 1.5, 22, 5
+      ]
+    },
+    "id": "red_alumbrado_pto",
+    "source": "retiro",
+    "source-layer": "retiro-red_alumbrado_pto",
+    "type": "symbol",
+    "minzoom": 17
+  }, {
+    "layout": {
+      "icon-allow-overlap": true,
+      "text-field": "p",
+      "text-offset": [0, 0.2],
+      "text-size": ["interpolate", ["linear"],
+        ["zoom"], 0, 10, 19, 30, 22, 100
+      ],
+      "text-allow-overlap": true,
+      "text-ignore-placement": true,
+      "icon-size": ["interpolate", ["linear"],
+        ["zoom"], 0, 0.1, 19, 0.3, 22, 1
+      ],
+      "icon-image": "fondo",
+      "icon-ignore-placement": true,
+      "text-font": ["accparhis"]
+    },
+    "metadata": {
+      "accparhis:z-index": 39
+    },
+    "maxzoom": 24,
+    "paint": {
+      "text-halo-color": "#FFF",
+      "text-color": "#148fbe",
+      "text-halo-width": ["interpolate", ["linear"],
+        ["zoom"], 0, 0.5, 19, 1.5, 22, 5
+      ]
+    },
+    "id": "red_riego_pto",
+    "source": "retiro",
+    "source-layer": "retiro-red_riego_pto",
+    "type": "symbol",
+    "minzoom": 17
+  }, {
+    "layout": {
+      "icon-allow-overlap": true,
+      "text-field": "h",
+      "text-offset": [0, 0.2],
+      "text-size": ["interpolate", ["linear"],
+        ["zoom"], 0, 10, 19, 30, 22, 100
+      ],
+      "text-allow-overlap": true,
+      "text-ignore-placement": true,
+      "icon-size": ["interpolate", ["linear"],
+        ["zoom"], 0, 0.1, 19, 0.3, 22, 1
+      ],
+      "icon-image": "fondo",
+      "icon-ignore-placement": true,
+      "text-font": ["accparhis"]
+    },
+    "metadata": {
+      "accparhis:z-index": 40
+    },
+    "maxzoom": 24,
+    "paint": {
+      "text-halo-color": "#FFF",
+      "text-color": "#bab9b9",
+      "text-halo-width": ["interpolate", ["linear"],
+        ["zoom"], 0, 0.5, 19, 1.5, 22, 5
+      ]
+    },
+    "id": "arqueta",
+    "source": "retiro",
+    "source-layer": "retiro-arqueta",
+    "type": "symbol",
+    "minzoom": 17
+  }, {
+    "layout": {
+      "icon-allow-overlap": true,
+      "text-field": "j",
+      "text-offset": [0, 0.2],
+      "text-size": ["interpolate", ["linear"],
+        ["zoom"], 0, 10, 19, 30, 22, 100
+      ],
+      "text-allow-overlap": true,
+      "text-ignore-placement": true,
+      "icon-size": ["interpolate", ["linear"],
+        ["zoom"], 0, 0.1, 19, 0.3, 22, 1
+      ],
+      "icon-image": "fondo",
+      "icon-ignore-placement": true,
+      "text-font": ["accparhis"]
+    },
+    "metadata": {
+      "accparhis:z-index": 41
+    },
+    "maxzoom": 24,
+    "paint": {
+      "text-halo-color": "#FFF",
+      "text-color": "#fba153",
+      "text-halo-width": ["interpolate", ["linear"],
+        ["zoom"], 0, 0.5, 19, 1.5, 22, 5
+      ]
+    },
+    "id": "banco",
+    "source": "retiro",
+    "source-layer": "retiro-banco",
+    "type": "symbol",
+    "minzoom": 17
+  }, {
+    "layout": {
+      "icon-allow-overlap": true,
+      "text-field": "k",
+      "text-offset": [0, 0.2],
+      "text-size": ["interpolate", ["linear"],
+        ["zoom"], 0, 10, 19, 30, 22, 100
+      ],
+      "text-allow-overlap": true,
+      "text-ignore-placement": true,
+      "icon-size": ["interpolate", ["linear"],
+        ["zoom"], 0, 0.1, 19, 0.3, 22, 1
+      ],
+      "icon-image": "fondo",
+      "icon-ignore-placement": true,
+      "text-font": ["accparhis"]
+    },
+    "metadata": {
+      "accparhis:z-index": 42
+    },
+    "paint": {
+      "text-halo-color": "#FFF",
+      "text-color": "#bab9b9",
+      "text-halo-width": ["interpolate", ["linear"],
+        ["zoom"], 0, 0.5, 19, 1.5, 22, 5
+      ]
+    },
+    "id": "bolardo",
+    "source": "retiro",
+    "source-layer": "retiro-bolardo",
+    "type": "symbol",
+    "minzoom": 17
+  }, {
+    "layout": {
+      "icon-allow-overlap": true,
+      "text-field": "l",
+      "text-offset": [0, 0.2],
+      "text-size": ["interpolate", ["linear"],
+        ["zoom"], 0, 10, 19, 30, 22, 100
+      ],
+      "text-allow-overlap": true,
+      "text-ignore-placement": true,
+      "icon-size": ["interpolate", ["linear"],
+        ["zoom"], 0, 0.1, 19, 0.3, 22, 1
+      ],
+      "icon-image": "fondo",
+      "icon-ignore-placement": true,
+      "text-font": ["accparhis"]
+    },
+    "metadata": {
+      "accparhis:z-index": 43
+    },
+    "paint": {
+      "text-halo-color": "#FFF",
+      "text-color": "#fba153",
+      "text-halo-width": ["interpolate", ["linear"],
+        ["zoom"], 0, 0.5, 19, 1.5, 22, 5
+      ]
+    },
+    "id": "carteleria",
+    "source": "retiro",
+    "source-layer": "retiro-carteleria",
+    "type": "symbol",
+    "minzoom": 17
+  }, {
+    "layout": {
+      "icon-allow-overlap": true,
+      "text-field": "m",
+      "text-offset": [0, 0.2],
+      "text-size": ["interpolate", ["linear"],
+        ["zoom"], 0, 10, 19, 30, 22, 100
+      ],
+      "text-allow-overlap": true,
+      "text-ignore-placement": true,
+      "icon-size": ["interpolate", ["linear"],
+        ["zoom"], 0, 0.1, 19, 0.3, 22, 1
+      ],
+      "icon-image": "fondo",
+      "icon-ignore-placement": true,
+      "text-font": ["accparhis"]
+    },
+    "metadata": {
+      "accparhis:z-index": 44
+    },
+    "paint": {
+      "text-halo-color": "#FFF",
+      "text-color": "#148fbe",
+      "text-halo-width": ["interpolate", ["linear"],
+        ["zoom"], 0, 0.5, 19, 1.5, 22, 5
+      ]
+    },
+    "id": "fuente_beber",
+    "source": "retiro",
+    "source-layer": "retiro-fuente_beber",
+    "type": "symbol",
+    "minzoom": 17
+  }, {
+    "layout": {
+      "icon-allow-overlap": true,
+      "text-field": "n",
+      "text-offset": [0, 0.2],
+      "text-size": ["interpolate", ["linear"],
+        ["zoom"], 0, 10, 19, 30, 22, 100
+      ],
+      "text-allow-overlap": true,
+      "text-ignore-placement": true,
+      "icon-size": ["interpolate", ["linear"],
+        ["zoom"], 0, 0.1, 19, 0.3, 22, 1
+      ],
+      "icon-image": "fondo",
+      "icon-ignore-placement": true,
+      "text-font": ["accparhis"]
+    },
+    "metadata": {
+      "accparhis:z-index": 45
+    },
+    "maxzoom": 24,
+    "paint": {
+      "text-halo-color": "#FFF",
+      "text-color": "#fba153",
+      "text-halo-width": ["interpolate", ["linear"],
+        ["zoom"], 0, 0.5, 19, 1.5, 22, 5
+      ]
+    },
+    "id": "mesa",
+    "source": "retiro",
+    "source-layer": "retiro-mesa",
+    "type": "symbol",
+    "minzoom": 17
+  }, {
+    "layout": {
+      "icon-allow-overlap": true,
+      "text-field": "o",
+      "text-offset": [0, 0.2],
+      "text-size": ["interpolate", ["linear"],
+        ["zoom"], 0, 10, 19, 30, 22, 100
+      ],
+      "text-allow-overlap": true,
+      "text-ignore-placement": true,
+      "icon-size": ["interpolate", ["linear"],
+        ["zoom"], 0, 0.1, 19, 0.3, 22, 1
+      ],
+      "icon-image": "fondo",
+      "icon-ignore-placement": true,
+      "text-font": ["accparhis"]
+    },
+    "metadata": {
+      "accparhis:z-index": 46
+    },
+    "maxzoom": 24,
+    "paint": {
+      "text-halo-color": "#FFF",
+      "text-color": "#bab9b9",
+      "text-halo-width": ["interpolate", ["linear"],
+        ["zoom"], 0, 0.5, 19, 1.5, 22, 5
+      ]
+    },
+    "id": "papelera",
+    "source": "retiro",
+    "source-layer": "retiro-papelera",
+    "type": "symbol",
+    "minzoom": 17
+  }],
+  "zoom": 16,
+  "glyphs": "https://storage.googleapis.com/agia-local-front/common-files/glyphs/{fontstack}/{range}.pbf",
+  "id": "",
+  "version": 8
+}
