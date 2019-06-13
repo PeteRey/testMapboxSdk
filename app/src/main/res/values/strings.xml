@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">mapbox</string>
     <string name="access_token">pk.eyJ1IjoibWljaG9nYXIiLCJhIjoiY2puN2JyYXoyMDJpajN3cDY2aW9uaW1hZyJ9.UR1LiAaqQAB8233md6xhgQ</string>
-
+    <string name="btnDownload">Descarga</string>
 </resources>

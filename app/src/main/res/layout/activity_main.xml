@@ -6,6 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/btnDownload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/btnDownload"
+        mapbox:layout_constraintBottom_toBottomOf="parent"
+        mapbox:layout_constraintStart_toStartOf="parent"
+        mapbox:layout_constraintTop_toTopOf="@+id/mapView"
+        mapbox:layout_constraintVertical_bias="0.967" />
+
     <com.mapbox.mapboxsdk.maps.MapView
         android:id="@+id/mapView"
         android:layout_width="match_parent"
@@ -15,12 +29,11 @@
         mapbox:layout_constraintHorizontal_bias="0.0"
         mapbox:layout_constraintStart_toStartOf="parent"
         mapbox:layout_constraintTop_toTopOf="parent"
-        mapbox:layout_constraintVertical_bias="0.06"
+        mapbox:layout_constraintVertical_bias="0.0"
         mapbox:mapbox_cameraTargetLat="40.4154"
         mapbox:mapbox_cameraTargetLng="-3.6834"
         mapbox:mapbox_cameraTilt="0"
         mapbox:mapbox_cameraZoom="14">
-
 
 
     </com.mapbox.mapboxsdk.maps.MapView>
