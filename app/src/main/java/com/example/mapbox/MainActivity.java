@@ -56,11 +56,11 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     public void downloadRegion(){
-
+        String url = "http://192.168.8.103:8080/style_retiro.json";
         double[] bounds = {40.422710, -3.673897, 40.405392, -3.691835};
         // Define region of map tiles
         OfflineTilePyramidRegionDefinition definition = new OfflineTilePyramidRegionDefinition(
-                styleUrl.getUrl(),
+                url,
                 new LatLngBounds.Builder()
                         .include(new LatLng(bounds[0], bounds[1]))
                         .include(new LatLng(bounds[2], bounds[3]))
