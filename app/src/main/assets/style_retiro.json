@@ -5,22 +5,11 @@
     "accparhis:date": "2019-05-31T08:56:11.938Z"
   },
   "sources": {
-    "simple-tiles": {
-      "tiles": ["http://a.tile.openstreetmap.org/{z}/{x}/{y}.png", "http://b.tile.openstreetmap.org/{z}/{x}/{y}.png"],
-      "scheme": "xyz",
-      "tileSize": 256,
-      "type": "raster"
-    },
     "retiro": {
       "tiles": ["http://195.76.38.10:18081/geowebcache/service/tms/1.0.0/dev:retiro-retiro@agia:900913@pbf/{z}/{x}/{y}.pbf"],
       "scheme": "tms",
       "bounds": [-3.688884272474369, 40.40820812568393, -3.6764302539524234, 40.421528059548365],
       "type": "vector"
-    },
-    "satellite": {
-      "tiles": ["http://172.27.20.21:18081/geowebcache/service/tms/1.0.0/PNOA-Cadiz@agia:900913@png/{z}/{x}/{y}.png"],
-      "scheme": "tms",
-      "type": "raster"
     }
   },
   "center": [-3.6830656180821, 40.4147255182044],
@@ -35,29 +24,7 @@
     },
     "id": "background",
     "type": "background"
-  }, {
-    "layout": {
-      "visibility": "none"
-    },
-    "metadata": {
-      "accparhis:z-index": 1
-    },
-    "id": "satellite",
-    "source": "satellite",
-    "type": "raster"
-  }, {
-    "layout": {
-      "visibility": "none"
-    },
-    "metadata": {
-      "accparhis:z-index": 1
-    },
-    "maxzoom": 22,
-    "id": "street",
-    "source": "simple-tiles",
-    "type": "raster",
-    "minzoom": 0
-  }, {
+  },  {
     "metadata": {
       "accparhis:z-index": 2
     },
